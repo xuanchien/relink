@@ -130,7 +130,7 @@ public class LinkBuilder {
                             }
                         }
                     }
-                    
+
                 }
                 if (i < sequenceLength - 1){
                     nextNode = nodes.get(i+1);
@@ -164,18 +164,19 @@ public class LinkBuilder {
             LinkableNode node = nodes.get(i);
             //it should have at least 1 connection already
             if (node.isNP() && node.isAvailable()){
+//                return node;
                 if (node.hasConnectionToVerb(LinkableNode.RIGHT_MODE)){
                     return node;
                 }else{
                     if (!hasSeenVerb){
                         return node;
                     }
-                    LinkableNode rightNode = nodes.get(i+1);
-                    if (!node.hasLeftNode() && rightNode.isNP() && rightNode.hasRightNode()){
-                        return node;
-                    }else{
-                        break;
-                    }
+//                    LinkableNode rightNode = nodes.get(i+1);
+//                    if (!node.hasLeftNode() && rightNode.isNP() && rightNode.hasRightNode()){
+//                        return node;
+//                    }else{
+//                        break;
+//                    }
                 }
             }
             if (node.isActiveVerb()){

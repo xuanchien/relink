@@ -71,9 +71,9 @@ public class ReLinkExtractor {
             start = System.nanoTime();
 
 //            if (!params.hasOption("t")){
-//                System.out.println(sentence.toString(ChunkedSentence.TOKEN_LAYER));
-//                logger.debug(sentence.toString(ChunkedSentence.POS_LAYER));
-//                logger.debug(sentence.toString(ChunkedSentence.CHUNK_LAYER));
+                System.out.println(sentence.toString(ChunkedSentence.TOKEN_LAYER));
+                logger.debug(sentence.toString(ChunkedSentence.POS_LAYER));
+                logger.debug(sentence.toString(ChunkedSentence.CHUNK_LAYER));
 //            }
 
             sentenceCount++;
@@ -83,8 +83,8 @@ public class ReLinkExtractor {
             nounIdentifier.extendNoun(sentence);
 
             //logger.debug("After merging");
-            //logger.debug(sentence.toString(ChunkedSentence.TOKEN_LAYER));
-            //logger.debug(sentence.toString(ChunkedSentence.GROUP_LAYER));
+            logger.debug(sentence.toString(ChunkedSentence.TOKEN_LAYER));
+            logger.debug(sentence.toString(ChunkedSentence.GROUP_LAYER));
 
             LinkBuilder builder = new LinkBuilder(sentence);
 

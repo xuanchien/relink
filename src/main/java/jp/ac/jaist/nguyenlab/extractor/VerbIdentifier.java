@@ -9,7 +9,7 @@ public class VerbIdentifier {
     private static final String ADVERB_PART ="[RP_pos RB_pos]*";
     private static final String CHUNK_PART = "[RP_pos RB_pos (B-VP_chunk? I-VP_chunk)]*";
     private static final String SUFFIX_ADVERB_PART = "[RP_pos RB_pos B-PRT_chunk B-ADJP_chunk]*";
-    private static final String RELATED_VP = "[RP_pos RB_pos B-PRT_chunk B-ADJP_chunk (I-VP_chunk*)]*";
+    private static final String RELATED_VP = "[RP_pos RB_pos B-PRT_chunk B-ADJP_chunk (B-VP_chunk? I-VP_chunk*)]*";
 
     public static final String ACTIVE_VERB =
                         // Optional adverb

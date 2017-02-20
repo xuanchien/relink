@@ -53,7 +53,7 @@ public class RelationExtractor {
         int endRange = arg1Node.getRange().getEnd();
 
         for (LinkableNode node: arg1Node.getRightNodes()){
-            if (node.isPP()){
+            if (node.isPP() && node.hasRightNode()){
                 LinkableNode nodeAfterPP = node.getFirstRightNode();
 
                 if (nodeAfterPP.isNP()){
@@ -170,85 +170,6 @@ public class RelationExtractor {
 
         return new Range(startRange, endRange - startRange);
     }
-
-
-//    private void extractRelAndArg2(List<ChunkedBinaryExtraction> relationAndArg2Data,
-//                                   ChunkedArgumentExtraction arg1,
-//                                   LinkableNode relNode){
-//        String relName = relNode.getToken();
-//        String arg2 = "";
-//
-//
-//        List<LinkableNode> chainOfRightNodes = getChainOfNodes(relNode, MAX_CHAIN_OF_NODE);
-//        int chainLength = chainOfRightNodes.size();
-//
-//        if (chainLength >= 1){
-//            LinkableNode node_0 = chainOfRightNodes.get(0);
-//            if (node_0.isNP()){
-//                addRelationToList(relationAndArg2Data, arg1, relName, node_0.getToken());
-//
-//                if (chainLength >= 3){
-//                    LinkableNode node_1 = chainOfRightNodes.get(1);
-//                    LinkableNode node_2 = chainOfRightNodes.get(2);
-//
-//                    if (node_1.isPP() && node_2.isNP()){
-//                        relName += " " + node_0.getToken() + " " + node_1.getToken();
-//                        arg2 = node_2.getToken();
-//
-//                        addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                    }else if (node_1.isToVerb() && node_2.isNP()){
-//                        relName += " " + node_0.getToken() + " " + node_1.getToken();
-//                        arg2 = node_2.getToken();
-//
-//                        addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                    }else if (node_1.isToVerb() && node_2.isPP()){
-//                        if (chainLength >= 4){
-//                            LinkableNode node_3 = chainOfRightNodes.get(3);
-//                            if (node_3.isNP()){
-//                                relName += " " + node_0.getToken() + " " + node_1.getToken() + " " + node_2.getToken();
-//                                arg2 = node_3.getToken();
-//
-//                                addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                            }
-//                        }
-//
-//                    }
-//
-//                }
-//            }else if (node_0.isPP() && chainLength >= 2){
-//                LinkableNode node_1 = chainOfRightNodes.get(1);
-//                if (node_1.isNP()){
-//                    relName += " " + node_0.getToken();
-//                    arg2 = node_1.getToken();
-//                    addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//
-//                    if (chainLength >= 4){
-//                        LinkableNode node_2 = chainOfRightNodes.get(2);
-//                        LinkableNode node_3 = chainOfRightNodes.get(3);
-//
-//                        if (node_2.isPP() && node_3.isNP()){
-//                            relName += " " +node_1.getToken() + " " + node_2.getToken();
-//                            arg2 = node_3.getToken();
-//                            addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                        }else if(node_2.isToVerb()){
-//                            relName += " " +node_1.getToken() + " " + node_2.getToken();
-//                            arg2 = node_3.getToken();
-//                            if (node_3.isNP()){
-//                                addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                            }else if (node_3.isPP() && chainLength >= 5){
-//                                LinkableNode node_4 = chainOfRightNodes.get(4);
-//                                if (node_4.isNP()){
-//                                    relName += " " + node_3.getToken();
-//                                    arg2 = node_4.getToken();
-//                                    addRelationToList(relationAndArg2Data, arg1, relName, arg2);
-//                                }
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//        }
-//    }
 
     private String[] extractFromListByPattern(List<LinkableNode> nodes, String pattern){
         String[] patternTokens = pattern.split(" ");
